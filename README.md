@@ -1,6 +1,6 @@
 # Mini-Courier Planner
 **Course:** Design & Analysis of Algorithms (ETCCDA302) - Capstone Assignment
-**Name / Roll No.:** Ayush Kumar Jha / 2501010252 **Faculty:** Dr. Ruchika Bhakar 
+**Name / Roll No.:** Ayush Kumar Jha / 2501010252 **Faculty:** Dr. Ruchika Bhakhar 
 
 Given a list of parcels and a road network, the program (1) sorts parcels by urgency,
 (2) chooses the most valuable set that fits in the vehicle, (3) finds shortest roads
