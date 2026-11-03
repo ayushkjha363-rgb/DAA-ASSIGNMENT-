@@ -1,0 +1,87 @@
+========================================================================
+ MINI-COURIER PLANNER
+========================================================================
+Parcels: 200   Locations: 61   Roads: 172   Vehicle capacity: 100 kg
+
+STEP 1 - Parcels sorted by deadline (then priority)  [Merge Sort]
+ID     Dest   kg  Deadline  Prio  Value
+P0004  C39     7        2h     3     35
+P0198  C47     7        2h     3     35
+P0076  C1      4        2h     2     25
+P0171  C51     4        2h     2     25
+P0182  C55     4        2h     2     25
+P0111  C5      5        2h     2     25
+P0120  C24     7        2h     2     25
+P0125  C15     9        2h     2     25
+P0131  C41     3        2h     1     15
+P0056  C57     6        2h     1     15
+P0077  C41     3        3h     3     35
+P0098  C7      4        3h     3     35
+P0057  C15     5        3h     3     35
+P0137  C27     6        3h     3     35
+P0040  C9      8        3h     3     35
+... (185 more)
+
+STEP 2 - Best set of parcels for this trip  [0/1 Knapsack DP]
+  P0077  -> C41  3 kg  value 35
+  P0098  -> C7   4 kg  value 35
+  P0157  -> C14  3 kg  value 25
+  P0129  -> C22  2 kg  value 35
+  P0156  -> C31  4 kg  value 35
+  P0007  -> C45  3 kg  value 25
+  P0051  -> C48  3 kg  value 24
+  P0123  -> C54  3 kg  value 34
+  P0013  -> C45  1 kg  value 24
+  P0105  -> C24  3 kg  value 24
+  P0059  -> C35  2 kg  value 34
+  P0162  -> C27  3 kg  value 34
+  P0166  -> C1   4 kg  value 34
+  P0001  -> C20  3 kg  value 34
+  P0172  -> C59  2 kg  value 24
+  P0191  -> C26  1 kg  value 14
+  P0099  -> C5   2 kg  value 33
+  P0097  -> C28  1 kg  value 23
+  P0145  -> C57  1 kg  value 23
+  P0146  -> C47  2 kg  value 23
+  P0102  -> C32  3 kg  value 23
+  P0135  -> C44  3 kg  value 23
+  P0140  -> C46  1 kg  value 32
+  P0115  -> C59  2 kg  value 22
+  P0121  -> C51  4 kg  value 32
+  P0061  -> C37  1 kg  value 12
+  P0067  -> C34  2 kg  value 32
+  P0084  -> C30  2 kg  value 32
+  P0012  -> C40  1 kg  value 12
+  P0037  -> C10  4 kg  value 31
+  P0136  -> C35  2 kg  value 21
+  P0035  -> C7   1 kg  value 11
+  P0071  -> C35  1 kg  value 11
+  P0011  -> C21  2 kg  value 21
+  P0020  -> C40  3 kg  value 21
+  P0165  -> C4   3 kg  value 31
+  P0139  -> C41  1 kg  value 21
+  P0006  -> C52  2 kg  value 21
+  P0023  -> C55  3 kg  value 31
+  P0192  -> C46  2 kg  value 21
+  P0031  -> C44  1 kg  value 20
+  P0044  -> C45  1 kg  value 10
+  P0096  -> C4   1 kg  value 10
+  P0179  -> C29  1 kg  value 10
+  P0069  -> C49  1 kg  value 30
+  P0078  -> C25  1 kg  value 20
+  P0083  -> C8   1 kg  value 30
+  Load: 100/100 kg   Total value: 1163   Parcels left for later trips: 153
+
+STEP 3 - Delivery route  [Dijkstra + Nearest-Neighbour TSP]
+  Stops to visit : C1, C10, C14, C20, C21, C22, C24, C25, C26, C27, C28, C29, C30, C31, C32, C34, C35, C37, C4, C40, C41, C44, C45, C46, C47, C48, C49, C5, C51, C52, C54, C55, C57, C59, C7, C8
+  Visiting order : D -> C31 -> C22 -> C32 -> C21 -> C55 -> C1 -> C47 -> C4 -> C49 -> C5 -> C30 -> C40 -> C48 -> C57 -> C44 -> C14 -> C59 -> C20 -> C28 -> C8 -> C45 -> C27 -> C51 -> C29 -> C25 -> C24 -> C37 -> C41 -> C54 -> C26 -> C35 -> C52 -> C10 -> C46 -> C7 -> C34 -> D
+  Road route     : D -> C36 -> C56 -> C58 -> C31 -> C22 -> C32 -> C22 -> C31 -> C21 -> C38 -> C55 -> C38 -> C1 -> C47 -> C4 -> C47 -> C49 -> C15 -> C5 -> C30 -> C5 -> C40 -> C5 -> C15 -> C48 -> C58 -> C16 -> C57 -> C44 -> C14 -> C44 -> C57 -> C59 -> C11 -> C16 -> C58 -> C20 -> C28 -> C20 -> C8 -> C45 -> C27 -> C51 -> C27 -> C45 -> C29 -> C25 -> C24 -> C37 -> C2 -> C8 -> C41 -> C1 -> C47 -> C4 -> C54 -> C4 -> C47 -> C26 -> C35 -> C15 -> C3 -> C50 -> C52 -> C10 -> C33 -> C36 -> C56 -> C58 -> C31 -> C22 -> C46 -> C7 -> C16 -> C11 -> C34 -> C11 -> C16 -> C58 -> C56 -> C36 -> D
+  Total distance : 337 km
+  Arrival times  : C31 0.4h, C22 0.5h, C32 0.6h, C21 0.8h, C55 0.9h, C1 1.1h, C47 1.2h, C4 1.3h, C49 1.4h, C5 1.6h, C30 1.6h, C40 1.8h, C48 2.2h, C57 2.5h, C44 2.6h, C14 2.8h, C59 3.2h, C20 3.6h, C28 3.7h, C8 3.9h, C45 4.0h, C27 4.1h, C51 4.1h, C29 4.4h, C25 4.6h, C24 4.7h, C37 4.7h, C41 5.1h, C54 5.8h, C26 6.6h, C35 6.9h, C52 7.9h, C10 8.0h, C46 8.9h, C7 9.6h, C34 10.4h, D 11.2h
+  WARNING late parcels: P0077 (due 3h), P0098 (due 3h), P0007 (due 4h)
+
+RUNTIME OF MAJOR STEPS
+  sorting        0.359 ms
+  knapsack       1.289 ms
+  dijkstra       1.734 ms
+  tsp_nn         0.072 ms

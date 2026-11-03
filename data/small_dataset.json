@@ -1,0 +1,169 @@
+{
+ "depot": "D",
+ "capacity_kg": 20,
+ "speed_kmph": 30,
+ "nodes": [
+  "D",
+  "C1",
+  "C2",
+  "C3",
+  "C4",
+  "C5",
+  "C6",
+  "C7"
+ ],
+ "edges": [
+  [
+   "C7",
+   "C6",
+   19
+  ],
+  [
+   "C2",
+   "C6",
+   17
+  ],
+  [
+   "C4",
+   "C6",
+   2
+  ],
+  [
+   "D",
+   "C6",
+   14
+  ],
+  [
+   "C3",
+   "C4",
+   3
+  ],
+  [
+   "C1",
+   "C7",
+   3
+  ],
+  [
+   "C5",
+   "D",
+   14
+  ],
+  [
+   "D",
+   "C1",
+   8
+  ],
+  [
+   "D",
+   "C3",
+   2
+  ],
+  [
+   "C2",
+   "C4",
+   14
+  ],
+  [
+   "C2",
+   "C1",
+   19
+  ],
+  [
+   "C1",
+   "C3",
+   12
+  ],
+  [
+   "C5",
+   "C7",
+   19
+  ],
+  [
+   "C2",
+   "C3",
+   3
+  ]
+ ],
+ "parcels": [
+  {
+   "id": "P01",
+   "dest": "C5",
+   "weight": 8,
+   "deadline": 11,
+   "priority": 3,
+   "value": 33
+  },
+  {
+   "id": "P02",
+   "dest": "C3",
+   "weight": 2,
+   "deadline": 16,
+   "priority": 2,
+   "value": 22
+  },
+  {
+   "id": "P03",
+   "dest": "C4",
+   "weight": 3,
+   "deadline": 18,
+   "priority": 1,
+   "value": 11
+  },
+  {
+   "id": "P04",
+   "dest": "C4",
+   "weight": 7,
+   "deadline": 6,
+   "priority": 2,
+   "value": 24
+  },
+  {
+   "id": "P05",
+   "dest": "C1",
+   "weight": 9,
+   "deadline": 23,
+   "priority": 1,
+   "value": 10
+  },
+  {
+   "id": "P06",
+   "dest": "C3",
+   "weight": 6,
+   "deadline": 12,
+   "priority": 3,
+   "value": 33
+  },
+  {
+   "id": "P07",
+   "dest": "C5",
+   "weight": 8,
+   "deadline": 17,
+   "priority": 3,
+   "value": 31
+  },
+  {
+   "id": "P08",
+   "dest": "C3",
+   "weight": 8,
+   "deadline": 4,
+   "priority": 1,
+   "value": 15
+  },
+  {
+   "id": "P09",
+   "dest": "C6",
+   "weight": 5,
+   "deadline": 3,
+   "priority": 1,
+   "value": 15
+  },
+  {
+   "id": "P10",
+   "dest": "C7",
+   "weight": 8,
+   "deadline": 23,
+   "priority": 3,
+   "value": 30
+  }
+ ]
+}

@@ -1,0 +1,11 @@
+n=50    sort=    0.06ms  knapsack=     0.84ms  dijkstra=    0.09ms  tsp_nn=   0.01ms
+n=100   sort=    0.13ms  knapsack=     1.42ms  dijkstra=    0.31ms  tsp_nn=   0.03ms
+n=200   sort=    0.28ms  knapsack=     2.78ms  dijkstra=    1.12ms  tsp_nn=   0.07ms
+n=400   sort=    0.67ms  knapsack=     6.13ms  dijkstra=    4.64ms  tsp_nn=   0.28ms
+n=800   sort=    1.45ms  knapsack=    11.91ms  dijkstra=   12.66ms  tsp_nn=   0.45ms
+n=1600  sort=    3.11ms  knapsack=    22.86ms  dijkstra=   25.82ms  tsp_nn=   0.42ms
+n=3200  sort=    6.61ms  knapsack=    46.02ms  dijkstra=   56.87ms  tsp_nn=   0.43ms
+
+NN tour vs optimal over 40 instances (7 stops): average ratio 1.062, worst 1.207, optimal in 10/40
+Knapsack greedy value gap vs DP (%): [3.7, 8.0, 4.8, 0.0, 4.6, 1.7]
+Saved outputs/runtime_chart.png and outputs/benchmark_results.csv

@@ -1,0 +1,53 @@
+========================================================================
+ MINI-COURIER PLANNER
+========================================================================
+Parcels: 10   Locations: 8   Roads: 14   Vehicle capacity: 20 kg
+
+STEP 1 - Parcels sorted by deadline (then priority)  [Merge Sort]
+ID     Dest   kg  Deadline  Prio  Value
+P09    C6      5        3h     1     15
+P08    C3      8        4h     1     15
+P04    C4      7        6h     2     24
+P01    C5      8       11h     3     33
+P06    C3      6       12h     3     33
+P02    C3      2       16h     2     22
+P07    C5      8       17h     3     31
+P03    C4      3       18h     1     11
+P10    C7      8       23h     3     30
+P05    C1      9       23h     1     10
+
+STEP 2 - Best set of parcels for this trip  [0/1 Knapsack DP]
+DP table  (rows = parcels considered, columns = capacity in kg)
+         0   1   2   3   4   5   6   7   8   9  10  11  12  13  14  15  16  17  18  19  20
+  none   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0   0
+   P09   0   0   0   0   0  15  15  15  15  15  15  15  15  15  15  15  15  15  15  15  15
+   P08   0   0   0   0   0  15  15  15  15  15  15  15  15  30  30  30  30  30  30  30  30
+   P04   0   0   0   0   0  15  15  24  24  24  24  24  39  39  39  39  39  39  39  39  54
+   P01   0   0   0   0   0  15  15  24  33  33  33  33  39  48  48  57  57  57  57  57  72
+   P06   0   0   0   0   0  15  33  33  33  33  33  48  48  57  66  66  66  66  72  81  81
+   P02   0   0  22  22  22  22  33  37  55  55  55  55  55  70  70  79  88  88  88  88  94
+   P07   0   0  22  22  22  22  33  37  55  55  55  55  55  70  70  79  88  88  88  88  94
+   P03   0   0  22  22  22  33  33  37  55  55  55  66  66  70  70  79  88  88  90  99  99
+   P10   0   0  22  22  22  33  33  37  55  55  55  66  66  70  70  79  88  88  90  99  99
+   P05   0   0  22  22  22  33  33  37  55  55  55  66  66  70  70  79  88  88  90  99  99
+
+  P01  -> C5   8 kg  value 33
+  P06  -> C3   6 kg  value 33
+  P02  -> C3   2 kg  value 22
+  P03  -> C4   3 kg  value 11
+  Load: 19/20 kg   Total value: 99   Parcels left for later trips: 6
+
+STEP 3 - Delivery route  [Dijkstra + Nearest-Neighbour TSP]
+  Stops to visit : C3, C4, C5
+  Visiting order : D -> C3 -> C4 -> C5 -> D
+  Road route     : D -> C3 -> C4 -> C3 -> D -> C5 -> D
+  Total distance : 38 km
+  Optimal (brute force): 38 km  -> approximation ratio 1.00
+  Arrival times  : C3 0.1h, C4 0.2h, C5 0.8h, D 1.3h
+  All selected parcels arrive before their deadlines.
+
+RUNTIME OF MAJOR STEPS
+  sorting        0.016 ms
+  knapsack       0.021 ms
+  dijkstra       0.037 ms
+  tsp_nn         0.006 ms
